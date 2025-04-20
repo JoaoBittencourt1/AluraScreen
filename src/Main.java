@@ -1,5 +1,4 @@
-package aula.caua;
-
+import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
@@ -8,6 +7,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Filme meuFilme = new Filme();
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
         Serie lost = new Serie();
 
         lost.setNome("Lost");
@@ -15,11 +15,16 @@ public class Main {
         lost.exibeFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
+        lost.setMinutosPorEpisodio(50);
+        System.out.println("duracao em minutos da serie: " + lost.getDuracaoEmMinutos());
+
+
 
         Scanner input = new Scanner(System.in);
         meuFilme.setNome("O poderoso chefao");
         meuFilme.setAnoDeLancamento(1970);
         meuFilme.setDuracaoEmMinutos(180);
+        System.out.println("duracao do filme: " + meuFilme.getDuracaoEmMinutos());
 
 
 
@@ -31,6 +36,16 @@ public class Main {
         System.out.println("total de avaliacoes: " +meuFilme.getTotalDeAvaliacoes());
         // System.out.println(meuFilme.totalDeAvaliacoes);
         System.out.println("media: "+ meuFilme.pegaMedia());
+
+        Filme outroFilme = new Filme();
+        outroFilme.setNome("Avatar");
+        outroFilme.setAnoDeLancamento(2003);
+        outroFilme.setDuracaoEmMinutos(203);
+
+        calculadora.inclui(outroFilme);
+        calculadora.inclui(meuFilme);
+        calculadora.inclui(lost);
+        System.out.println(calculadora.getTempoTotal());
 
 
     }
