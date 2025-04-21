@@ -8,6 +8,10 @@ public class Titulo {
     private int totalDeAvaliacoes;
     private int duracaoEmMinutos;
 
+    public String getNome() {
+        return nome;
+    }
+
     public int getDuracaoEmMinutos() {
         return duracaoEmMinutos;
     }
