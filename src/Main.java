@@ -66,11 +66,21 @@ public class Main {
         filmeDoPaulo.avalia(10);
 
         ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        ArrayList<Integer> listaDeInt = new ArrayList<>();
 
         listaDeFilmes.add(filmeDoPaulo);
         listaDeFilmes.add(meuFilme);
         listaDeFilmes.add(outroFilme);
+
+        listaDeInt.add(10);
+        listaDeInt.add(20);
+
+        System.out.println("tamanho da lista de int: " + listaDeInt.size());
+        System.out.println("primeiro indice da lista de int: " + listaDeInt.get(0));
+
         System.out.println("tamanho da lista: " + listaDeFilmes.size());
         System.out.println("primeiro filme da lista: " + listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes.get(0));
+        System.out.println(listaDeFilmes);
     }
 }

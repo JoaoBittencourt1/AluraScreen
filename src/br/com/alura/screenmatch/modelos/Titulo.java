@@ -12,6 +12,10 @@ public class Titulo {
         return nome;
     }
 
+    public int getAnoDeLancamento() {
+        return anoDeLancamento;
+    }
+
     public int getDuracaoEmMinutos() {
         return duracaoEmMinutos;
     }
