@@ -9,12 +9,11 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme();
+        Filme meuFilme = new Filme("Lost", 2000);
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
         Serie lost = new Serie();
 
-        lost.setNome("Lost");
-        lost.setAnoDeLancamento(2000);
+       
         lost.exibeFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
@@ -40,9 +39,7 @@ public class Main {
         // System.out.println(meuFilme.totalDeAvaliacoes);
         System.out.println("media: "+ meuFilme.pegaMedia());
 
-        Filme outroFilme = new Filme();
-        outroFilme.setNome("Avatar");
-        outroFilme.setAnoDeLancamento(2003);
+        Filme outroFilme = new Filme("Avatar", 2003);
         outroFilme.setDuracaoEmMinutos(203);
 
         calculadora.inclui(outroFilme);
@@ -59,10 +56,8 @@ public class Main {
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
 
-        var filmeDoPaulo = new Filme();
-        filmeDoPaulo.setNome("dogville");
+        var filmeDoPaulo = new Filme("dogville", 2003);
         filmeDoPaulo.setDuracaoEmMinutos(200);
-        filmeDoPaulo.setAnoDeLancamento(2003);
         filmeDoPaulo.avalia(10);
 
         ArrayList<Filme> listaDeFilmes = new ArrayList<>();
