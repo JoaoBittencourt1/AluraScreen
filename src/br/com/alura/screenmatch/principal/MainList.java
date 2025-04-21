@@ -5,8 +5,9 @@ import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.Collections;
+import java.util.Comparator;
 
 
 public class MainList {
@@ -21,7 +22,6 @@ public class MainList {
         Serie lost = new Serie("Lost", 2003);
 
         ArrayList<Titulo> lista = new ArrayList<>();
-        ArrayList<Integer> listaDeInt = new ArrayList<>();
         lista.add(filmeDoPaulo);
         lista.add(meuFilme);
         lista.add(outroFilme);
@@ -49,6 +49,8 @@ public class MainList {
         Collections.sort(lista);
         System.out.println(lista);
 
+        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println(lista);
 
 
     }
