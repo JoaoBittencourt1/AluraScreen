@@ -12,6 +12,9 @@ public class MainList {
         Filme meuFilme = new Filme("O poderoso chefao", 1970);
         Filme outroFilme = new Filme("Avatar", 2003);
         var filmeDoPaulo = new Filme("dogville", 2003);
+        meuFilme.avalia(9);
+        outroFilme.avalia(10);
+        filmeDoPaulo.avalia(2);
 
         Serie lost = new Serie("Lost", 2003);
 
@@ -22,7 +25,11 @@ public class MainList {
         lista.add(outroFilme);
         lista.add(lost);
         for (Titulo item: lista){
-            System.out.println(item);
+            System.out.println("nome do filme: " +item.getNome());
+            if(item instanceof Filme filme && filme.getClassificacao() > 2){
+                System.out.println(" " + filme.getClassificacao());
+            }
+
         }
 
 
