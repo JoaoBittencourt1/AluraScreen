@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme("Lost", 2000);
+        Filme meuFilme = new Filme("O poderoso chefao", 1970);
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
-        Serie lost = new Serie();
+        Serie lost = new Serie("Lost", 2003);
 
-       
+
         lost.exibeFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
@@ -23,8 +23,7 @@ public class Main {
 
 
         Scanner input = new Scanner(System.in);
-        meuFilme.setNome("O poderoso chefao");
-        meuFilme.setAnoDeLancamento(1970);
+
         meuFilme.setDuracaoEmMinutos(180);
         System.out.println("duracao do filme: " + meuFilme.getDuracaoEmMinutos());
 
