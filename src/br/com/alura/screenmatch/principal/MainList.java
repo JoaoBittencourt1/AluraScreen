@@ -4,10 +4,7 @@ import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
 
-import java.util.ArrayList;
-
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 
 public class MainList {
@@ -21,7 +18,7 @@ public class MainList {
 
         Serie lost = new Serie("Lost", 2003);
 
-        ArrayList<Titulo> lista = new ArrayList<>();
+        List<Titulo> lista = new LinkedList<>();
         lista.add(filmeDoPaulo);
         lista.add(meuFilme);
         lista.add(outroFilme);
