@@ -1,6 +1,7 @@
 package br.com.alura.screenmatch.principal;
 
 
+import br.com.alura.screenmatch.modelos.ErroDeConversaoException;
 import br.com.alura.screenmatch.modelos.Titulo;
 import br.com.alura.screenmatch.modelos.TituloOmdb;
 import com.google.gson.FieldNamingPolicy;
@@ -20,35 +21,37 @@ public class MainSearch {
         System.out.println("digite um filme para busca: ");
         var busca = input.nextLine();
 
-        String endereco = "http://www.omdbapi.com/?t=" + busca + "&apikey=cf6b4f27";
+        String endereco = "http://www.omdbapi.com/?t=" + busca.replace(" ", "+") + "&apikey=cf6b4f27";
 
         HttpClient client = HttpClient.newHttpClient();
-try{
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endereco))
-                .build();
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
+        try{
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(endereco))
+                    .build();
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
 
-        String json = response.body();
-        System.out.println(json);
+            String json = response.body();
+            System.out.println(json);
 
-        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+            Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
 
-        // Titulo meuTitulo = gson.fromJson(json, Titulo.class);
-        TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
-        System.out.println(meuTituloOmdb);
-        System.out.println("nome do filme: " + meuTituloOmdb );
-       // try{
+            // Titulo meuTitulo = gson.fromJson(json, Titulo.class);
+            TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+            System.out.println(meuTituloOmdb);
+            System.out.println("nome do filme: " + meuTituloOmdb );
+            // try{
             Titulo meuTitulo = new Titulo(meuTituloOmdb);
-    System.out.println(meuTitulo);
+            System.out.println(meuTitulo);
         }catch (NumberFormatException e){
             System.out.println("aconteceu um erro!");
             System.out.println(e.getMessage());
         }catch(IllegalArgumentException e){
-    System.out.println("algum erro de argumento na busca, verifique se digitou sem espaco");
-    System.out.println(e.getMessage());
-}
+            System.out.println("algum erro de argumento na busca, verifique se digitou sem espaco");
+            System.out.println(e.getMessage());
+        }catch(ErroDeConversaoException e){
+            System.out.println(e.getMessage());
+        }
 
         System.out.println("o programa finalizou corretamente!");
     }
