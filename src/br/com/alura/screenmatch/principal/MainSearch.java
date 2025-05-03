@@ -23,7 +23,7 @@ public class MainSearch {
         String endereco = "http://www.omdbapi.com/?t=" + busca + "&apikey=cf6b4f27";
 
         HttpClient client = HttpClient.newHttpClient();
-
+try{
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endereco))
                 .build();
@@ -39,7 +39,17 @@ public class MainSearch {
         TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
         System.out.println(meuTituloOmdb);
         System.out.println("nome do filme: " + meuTituloOmdb );
-        Titulo meuTitulo = new Titulo(meuTituloOmdb);
-        System.out.println(meuTitulo);
+       // try{
+            Titulo meuTitulo = new Titulo(meuTituloOmdb);
+    System.out.println(meuTitulo);
+        }catch (NumberFormatException e){
+            System.out.println("aconteceu um erro!");
+            System.out.println(e.getMessage());
+        }catch(IllegalArgumentException e){
+    System.out.println("algum erro de argumento na busca, verifique se digitou sem espaco");
+    System.out.println(e.getMessage());
+}
+
+        System.out.println("o programa finalizou corretamente!");
     }
 }
